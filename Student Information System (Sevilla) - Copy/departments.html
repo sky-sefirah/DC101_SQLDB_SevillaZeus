@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Subjects - CCS SIS</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <script defer>
+    async function load(){
+      const el = document.getElementById('list')
+      const res = await fetch('/api/subjects')
+      const data = await res.json()
+      if(!data || data.length===0){ el.innerHTML='<p>No subjects</p>'; return }
+      el.innerHTML = '<ul>'+data.map(s=>`<li>${s.code||''} — ${s.title}</li>`).join('')+'</ul>'
+    }
+    window.addEventListener('DOMContentLoaded', load)
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="homepage.html">
+      <img src="assets/logo.png" alt="logo" class="logo" onerror="this.style.display='none'" />
+      <h1>CCS Student Information System</h1>
+    </a>
+    <nav class="main-nav">
+      <a href="students.html">Students</a>
+      <a href="departments.html">Departments</a>
+      <a href="course.html">Courses</a>
+      <a href="settings.html">Settings</a>
+    </nav>
+    <div class="controls">
+      <div class="search">
+        <input id="searchInput" placeholder="Search students by name or ID..." />
+        <button id="searchBtn">Search</button>
+      </div>
+      <div class="settings">
+        <button id="settingsBtn">Settings ▾</button>
+        <div id="settingsMenu" class="menu hidden">
+          <a href="/logout">Logout</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="searchResults" class="results hidden"></section>
+
+  <main>
+    <h2 style="padding:0 20px">Departments</h2>
+    <div id="list" style="padding:12px 20px 20px 20px"></div>
+    <div id="deptStudents" style="padding:12px 20px 20px 20px"></div>
+    <h2>CCS Departments</h2>
+<button onclick="filter('ACT')">ACT</button>
+<button onclick="filter('BSCS')">BSCS</button>
+
+<h3>Year & Section</h3>
+<input id="newSec">
+<button onclick="addSec()">Add</button>
+<ul id="secList"></ul>
+
+<script>
+let sections=JSON.parse(localStorage.getItem('sections')||'[]');
+function renderSec(){
+  secList.innerHTML='';
+  sections.forEach((s,i)=>secList.innerHTML+=
+    `<li>${s} <button onclick="delSec(${i})">x</button></li>`);
+}
+function addSec(){
+  sections.push(newSec.value);
+  localStorage.setItem('sections',JSON.stringify(sections));
+  renderSec();
+}
+function delSec(i){
+  sections.splice(i,1);
+  localStorage.setItem('sections',JSON.stringify(sections));
+  renderSec();
+}
+renderSec();
+</script>
+
+<script>
+(function(){
+  const students = JSON.parse(localStorage.getItem('students')||'[]');
+  const container = document.getElementById('deptStudents');
+  if(!container) return;
+  function safeId(s){ return String(s||'').replace(/[^a-zA-Z0-9_-]/g,'_') }
+  const byDept = {};
+  for(const st of students){
+    const dept = st.dept || 'Unknown';
+    const sec = st.section || 'Unassigned';
+    byDept[dept] = byDept[dept] || {};
+    byDept[dept][sec] = byDept[dept][sec] || [];
+    byDept[dept][sec].push(st);
+  }
+  let html = '';
+  for(const dept of Object.keys(byDept)){
+    const did = 'dept-' + safeId(dept);
+    html += `<div class="dept-block"><h3>${dept} <button onclick="(function(d){const el=document.getElementById('`+did+`'); if(el) el.classList.toggle('hidden')})()">View</button></h3><div id="${did}" class="hidden">`;
+    for(const sec of Object.keys(byDept[dept])){
+      const sid = did + '-sec-' + safeId(sec);
+      html += `<div class="sec-block"><strong>${sec}</strong> <button onclick="(function(id){const el=document.getElementById(id); if(el) el.classList.toggle('hidden')} )('${sid}')">Show</button><ul id="${sid}" class="hidden">`;
+      for(const st of byDept[dept][sec]){
+        html += `<li style="cursor:pointer" onclick="selectResult('${encodeURIComponent(st.sid)}')">${st.sid} — ${st.last}, ${st.first}</li>`;
+      }
+      html += `</ul></div>`;
+    }
+    html += `</div></div>`;
+  }
+  container.innerHTML = html;
+})();
+</script>
+
+  </main>
+
+
+
+</body>
+</html>

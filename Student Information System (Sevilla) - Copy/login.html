@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Login - CCS SIS</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      .login{max-width:360px;margin:80px auto;padding:20px;background:#fff;border-radius:8px;border:1px solid #e6e9ef}
+      .login h2{margin:0 0 10px}
+      .login form{display:flex;flex-direction:column;gap:10px}
+      .login input{padding:10px;border-radius:6px;border:1px solid #d1d5db}
+      .login button{padding:10px;border-radius:6px;background:var(--accent);color:#fff;border:0}
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="homepage.html">
+        <img src="assets/logo.png" alt="logo" class="logo" onerror="this.style.display='none'" />
+        <h1>CCS Student Information System</h1>
+      </a>
+        <div class="settings">
+          <button id="settingsBtn">Settings ▾</button>
+          <div id="settingsMenu" class="menu hidden">
+            <a href="/settings.html">Settings</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="login" style="margin:40px auto;max-width:420px;padding:20px;background:#fff;border-radius:8px;border:1px solid #e6e9ef">
+        <h2>CCS SIS - Login</h2>
+        <form id="loginForm" method="POST" action="/login">
+          <input id="idInput" type="text" name="id" placeholder="Admin ID" required />
+          <input id="passwordInput" type="password" name="password" placeholder="Enter password" required />
+          <button id="loginBtn" type="submit">Enter</button>
+        </form>
+        <p id="loginMsg" style="font-size:13px;color:#c44;margin-top:10px;min-height:18px"></p>
+        <p style="font-size:13px;color:#666;margin-top:6px">Password-protected homepage.</p>
+      </div>
+      <script>
+        (function(){
+          const form = document.getElementById('loginForm')
+          const msg = document.getElementById('loginMsg')
+          const btn = document.getElementById('loginBtn')
+
+          form.addEventListener('submit', async (e) => {
+            e.preventDefault()
+            msg.textContent = ''
+            btn.disabled = true
+            const id = document.getElementById('idInput').value || ''
+            const pwd = document.getElementById('passwordInput').value || ''
+            try {
+              const body = new URLSearchParams({ id: id, password: pwd })
+              const res = await fetch('/login', {
+                method: 'POST',
+                body,
+                credentials: 'same-origin',
+                redirect: 'follow'
+              })
+              // If server redirected to another page, navigate there
+              if (res.redirected) {
+                // If redirected back to login (wrong password), show error
+                const url = new URL(res.url)
+                if (url.pathname.endsWith('/login')) {
+                  msg.textContent = 'Incorrect password. Please try again.'
+                  btn.disabled = false
+                  return
+                }
+                // Successful login -> redirect to final location
+                window.location.href = res.url
+                return
+              }
+              // If not redirected, inspect response text to guess result
+              const text = await res.text()
+              if (text && text.toLowerCase().includes('login')) {
+                msg.textContent = 'Login failed. Please check your password.'
+                btn.disabled = false
+                return
+              }
+              // Default: go to homepage
+              window.location.href = '/homepage.html'
+            } catch (err) {
+              msg.textContent = 'Unable to reach server. Make sure the server is running.'
+              btn.disabled = false
+            }
+          })
+        })()
+      </script>
+    </main>
+
+    <footer>
+      <small>© 2025 CCS Student Information System — Sevilla KLL Project</small>
+      <span>Made with Visual Code Studio. <a href="https://example.com" target="_blank" rel="noopener">About</a></span>
+    </footer>
+  </body>
+</html>

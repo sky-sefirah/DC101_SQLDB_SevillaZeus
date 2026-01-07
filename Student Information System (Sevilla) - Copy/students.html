@@ -1,0 +1,296 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Students - CCS SIS</title>
+</head>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="homepage.html">
+    <h1>CCS Student Information System</h1>
+  </a>
+  <nav class="main-nav">
+    <a href="students.html">Students</a>
+    <a href="departments.html">Departments</a>
+    <a href="course.html">Courses</a>
+    <a href="settings.html">Settings</a>
+  </nav>
+  <div class="controls">
+    <input id="searchInput" placeholder="Search by name or ID">
+    <button id="searchBtn">Search</button>
+  </div>
+  <div class="settings">
+        <button id="settingsBtn">Settings ▾</button>
+        <div id="settingsMenu" class="menu hidden">
+          <a href="/logout">Logout</a>
+        </div>
+      </div>
+</header>
+
+<section id="searchResults" class="results hidden"></section>
+
+<main>
+<h2 style="padding:20px">Student Information</h2>
+
+<div class="form-box" id="studentFormBox">
+  <div class="form-header">
+    <strong>Student Form</strong>
+    <button id="toggleFormBtn" type="button" onclick="toggleForm()">Minimize</button>
+  </div>
+  <form onsubmit="event.preventDefault(); saveStudent();">
+    <label>Student ID</label><input id="sid" required>
+    <label>Last Name</label><input id="last" required>
+    <label>First Name</label><input id="first" required>
+    <label>Middle Initial</label><input id="mi">
+    <label>Department</label>
+    <select id="dept">
+      <option>ACT</option>
+      <option>BSCS</option>
+    </select>
+    <label>Year & Section</label>
+    <select id="section"></select>
+    <label>Gender</label>
+    <select id="gender"><option>Male</option><option>Female</option></select>
+    <label>Birth Date</label><input type="date" id="bdate">
+    <label>Age</label><input type="number" id="age">
+    <label>Email</label><input type="email" id="email">
+    <label>Contact</label><input id="contact">
+    <label>Address</label><input id="address">
+      <br><br>
+      <button id="saveStudentBtn" type="submit">Save Student</button>
+  </form>
+</div>
+
+<div style="padding:20px">
+  <table class="table">
+    <thead>
+      <tr>
+        <th onclick="sortBy('sid')">#</th>
+        <th onclick="sortBy('sid')">Student ID</th>
+        <th onclick="sortBy('last')">Last Name</th>
+        <th onclick="sortBy('first')">First</th>
+        <th>M.I</th>
+        <th onclick="sortBy('dept')">Dept</th>
+        <th onclick="sortBy('section')">Year & Sec</th>
+        <th onclick="sortBy('gender')">Gender</th>
+        <th>Email</th>
+        <th>Contact</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+</div>
+</main>
+
+<script>
+let students = JSON.parse(localStorage.getItem('students')||'[]');
+let sections = JSON.parse(localStorage.getItem('sections')||'["1A","1B","2A","3A"]');
+let edit = -1;
+let asc = true;
+let currentSortKey = 'sid'; // Track current sort column
+
+const sectionSelect = document.getElementById('section');
+sections.forEach(s=>sectionSelect.innerHTML+=`<option>${s}</option>`);
+
+function saveStudent(){
+  const s={
+    sid: (document.getElementById('sid')||{}).value,
+    last: (document.getElementById('last')||{}).value,
+    first: (document.getElementById('first')||{}).value,
+    mi: (document.getElementById('mi')||{}).value,
+    dept: (document.getElementById('dept')||{}).value,
+    section: (document.getElementById('section')||{}).value,
+    gender: (document.getElementById('gender')||{}).value,
+    email: (document.getElementById('email')||{}).value,
+    contact: (document.getElementById('contact')||{}).value,
+    bdate: (document.getElementById('bdate')||{}).value,
+    age: (document.getElementById('age')||{}).value,
+    address: (document.getElementById('address')||{}).value
+  };
+  if(edit === -1){
+    students.push(s);
+  } else {
+    students[edit] = s;
+  }
+  edit = -1;
+  localStorage.setItem('students',JSON.stringify(students));
+  render();
+  const form = document.querySelector('.form-box form');
+  const saveBtn = document.getElementById('saveStudentBtn');
+  if(form){ form.reset(); }
+  if(saveBtn){ saveBtn.textContent = 'Save Student'; }
+}
+
+function render(){
+  const q = (document.getElementById('searchInput')||{value:''}).value.toLowerCase();
+  tbody.innerHTML='';
+  students.filter(s=>
+    (s.sid||'').includes(q)||((s.last||'').toLowerCase().includes(q))
+  ).forEach((s,i)=>{
+    const safeId = ('student-' + String(s.sid||'').replace(/[^a-zA-Z0-9_-]/g,'_'));
+    tbody.innerHTML+=`
+      <tr id="${safeId}">
+        <td>${i+1}</td><td>${s.sid}</td><td>${s.last}</td>
+        <td>${s.first}</td><td>${s.mi}</td>
+        <td>${s.dept}</td><td>${s.section}</td>
+        <td>${s.gender}</td><td>${s.email}</td>
+        <td>${s.contact}</td>
+        <td class="actions">
+          <button onclick="editStudent(${i})">Edit</button>
+          <button onclick="del(${i})">Del</button>
+        </td>
+      </tr>`;
+  });
+  // if page was opened with a hash for a student, scroll to it
+  if(location.hash && location.hash.startsWith('#student-')){
+    const el = document.getElementById(location.hash.slice(1));
+    if(el){ el.scrollIntoView({behavior:'smooth', block:'center'}); el.classList.add('highlight'); setTimeout(()=>el.classList.remove('highlight'),2000); }
+  }
+}
+
+function editStudent(i){
+  const s = students[i];
+  if(!s) return;
+  document.getElementById('sid').value = s.sid || '';
+  document.getElementById('last').value = s.last || '';
+  document.getElementById('first').value = s.first || '';
+  document.getElementById('mi').value = s.mi || '';
+  document.getElementById('dept').value = s.dept || '';
+  document.getElementById('section').value = s.section || '';
+  document.getElementById('gender').value = s.gender || '';
+  document.getElementById('bdate').value = s.bdate || '';
+  document.getElementById('age').value = s.age || '';
+  document.getElementById('email').value = s.email || '';
+  document.getElementById('contact').value = s.contact || '';
+  document.getElementById('address').value = s.address || '';
+  edit = i;
+  const saveBtn = document.getElementById('saveStudentBtn');
+  if(saveBtn) saveBtn.textContent = 'Update Student';
+  const box = document.getElementById('studentFormBox');
+  if(box && box.classList.contains('collapsed')) box.classList.remove('collapsed');
+}
+
+function toggleForm(){
+  const box = document.getElementById('studentFormBox');
+  const btn = document.getElementById('toggleFormBtn');
+  if(!box) return;
+  box.classList.toggle('collapsed');
+  if(btn) btn.textContent = box.classList.contains('collapsed') ? 'Show' : 'Minimize';
+}
+
+// ensure form expands when editing a student
+const originalEditStudent = editStudent;
+window.editStudent = function(i){
+  originalEditStudent(i);
+  const box = document.getElementById('studentFormBox');
+  const btn = document.getElementById('toggleFormBtn');
+  if(box && box.classList.contains('collapsed')){
+    box.classList.remove('collapsed');
+    if(btn) btn.textContent = 'Minimize';
+  }
+}
+
+function del(i){
+  if(confirm("Delete student?")){
+    students.splice(i,1);
+    // adjust edit index if needed
+    if(edit === i){
+      edit = -1;
+      const form = document.querySelector('.form-box form');
+      const saveBtn = document.getElementById('saveStudentBtn');
+      if(form) form.reset();
+      if(saveBtn) saveBtn.textContent = 'Save Student';
+    } else if(edit > i){
+      edit = edit - 1;
+    }
+    localStorage.setItem('students',JSON.stringify(students));
+    render();
+  }
+}
+
+function sortBy(key){
+  // If clicking the same column, toggle direction
+  if(currentSortKey === key){
+    asc = !asc;
+  } else {
+    // If clicking a different column, start with ascending
+    currentSortKey = key;
+    asc = true;
+  }
+
+  students.sort((a, b) => {
+    let aVal, bVal;
+
+    // Handle different sorting scenarios
+    switch(key) {
+      case 'first':
+        // Sort by full name (first + last)
+        aVal = `${(a.first || '').toLowerCase()} ${(a.last || '').toLowerCase()}`.trim();
+        bVal = `${(b.first || '').toLowerCase()} ${(b.last || '').toLowerCase()}`.trim();
+        break;
+      case 'dept':
+        aVal = (a.dept || '').toLowerCase();
+        bVal = (b.dept || '').toLowerCase();
+        break;
+      case 'section':
+        aVal = (a.section || '').toLowerCase();
+        bVal = (b.section || '').toLowerCase();
+        break;
+      case 'gender':
+        aVal = (a.gender || '').toLowerCase();
+        bVal = (b.gender || '').toLowerCase();
+        break;
+      default:
+        aVal = (a[key] || '').toLowerCase();
+        bVal = (b[key] || '').toLowerCase();
+    }
+
+    if (aVal < bVal) return asc ? -1 : 1;
+    if (aVal > bVal) return asc ? 1 : -1;
+    return 0;
+  });
+
+  // Update visual indicators
+  updateSortIndicators();
+  render();
+}
+
+function updateSortIndicators(){
+  // Remove existing sort indicators
+  const headers = document.querySelectorAll('th');
+  headers.forEach(header => {
+    header.classList.remove('sort-asc', 'sort-desc');
+  });
+
+  // Add indicator to current sort column
+  const sortMap = {
+    'sid': 1,      // Student ID column
+    'last': 2,     // Last Name column
+    'first': 3,    // First Name column
+    'dept': 5,     // Department column
+    'section': 6,  // Year & Section column
+    'gender': 7    // Gender column
+  };
+
+  const columnIndex = sortMap[currentSortKey];
+  if(columnIndex !== undefined){
+    const header = document.querySelector(`th:nth-child(${columnIndex + 1})`);
+    if(header){
+      header.classList.add(asc ? 'sort-asc' : 'sort-desc');
+    }
+  }
+}
+
+render();
+updateSortIndicators();
+</script>
+
+
+</body>
+</html>

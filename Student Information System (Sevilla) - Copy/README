@@ -1,0 +1,27 @@
+CCS Student Information System (Simple)
+
+Setup
+1. Install Node.js (14+) and MySQL.
+2. Copy `.env.example` to `.env` and fill DB credentials and `ADMIN_PASSWORD`.
+3. Create the database and tables by running the SQL in `db.sql` (e.g., in MySQL Workbench or via CLI):
+
+	mysql -u root -p < db.sql
+
+4. Install dependencies:
+
+	npm install
+
+5. Run the server:
+
+	npm start
+
+Open http://localhost:3000 and log in using the `ADMIN_ID: admin` and `ADMIN_PASSWORD: admin` in your `.env` (defaults `admin` / `admin`).
+
+Files added:
+- `server.js` — Node/Express server
+- `schema.sql` — database schema + sample data
+- `index.html`, `login.html`, `students.html`, `departments.html`, `course.html`, `settings.html`
+- `script.js`, `style.css`, `.env.example`, `package.json`
+
+Notes
+- This is a simple starter project. It uses server-side sessions and a single admin password for access. For production, secure with HTTPS, stronger auth, and proper DB user permissions.

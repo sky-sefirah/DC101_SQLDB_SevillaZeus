@@ -1,0 +1,269 @@
+:root{--bg:#800000;--card:#c62828;--card-hover:#a11b1b;--accent:#a31414;--muted:#ffecec;--header-bg:#b85a5a}
+*{box-sizing:border-box;font-family:Segoe UI, Roboto, Arial, sans-serif}
+html,body{height:100%}
+body{display:flex;flex-direction:column;min-height:100vh;margin:0;background:var(--bg);color:#111}
+main{flex:1}
+
+/* ============================================
+   HEADER STYLES
+   ============================================ */
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:var(--header-bg);border-bottom:1px solid rgba(255,255,255,0.06);color:#fff}
+.topbar a.brand{color:inherit}
+.topbar .brand .logo{filter:brightness(0) invert(1);opacity:.95}
+
+.topbar .search input{background:#fff;color:#000;border:1px solid rgba(0,0,0,0.12)}
+.topbar .search button{background:var(--accent);border:1px solid rgba(0,0,0,0.12);color:#fff}
+.topbar .settings .menu{right:0;top:40px}
+
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+.brand .logo{height:44px}
+.brand h1{font-size:18px;margin:0}
+
+.controls{display:flex;gap:12px;align-items:center}
+.search input{padding:8px 10px;border-radius:6px;border:1px solid #d1d5db;width:260px}
+.search button{padding:8px 10px;border-radius:6px;border:1px solid #cbd5e1;background:var(--accent);color:#fff}
+
+.settings{position:relative}
+#settingsBtn{padding:6px 10px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:4px;color:#fff;cursor:pointer;font-size:13px;transition:background .12s ease}
+#settingsBtn:hover{background:rgba(255,255,255,0.2)}
+.settings .menu{position:absolute;right:0;top:36px;background:var(--card);border:1px solid #e6e9ef;padding:8px;border-radius:6px;min-width:120px;box-shadow:0 4px 12px rgba(0,0,0,0.15)}
+.settings .menu a{display:block;padding:8px 12px;color:var(--accent);text-decoration:none;font-size:13px;border-radius:4px;transition:background .12s ease}
+.settings .menu a:hover{background:rgba(0,0,0,0.04)}
+/* make the logout link specifically black for clear visibility */
+.settings .menu a[href="/logout"], .settings .menu a.logout { color:#000 !important }
+
+/* ============================================
+   FOOTER STYLES
+   ============================================ */
+footer{flex-shrink:0;padding:14px 20px;text-align:center;background:transparent;border-top:1px solid rgba(0,0,0,0.04);color:var(--muted);font-size:13px}
+footer a{color:inherit;text-decoration:underline}
+footer small, footer span{display:block}
+
+/* ============================================
+   MAIN CONTENT STYLES
+   ============================================ */
+.hidden{display:none}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;padding:12px;max-width:1000px;margin:24px auto;background:transparent;border-radius:10px}
+.card{background:var(--card);padding:12px;border-radius:6px;border:1px solid rgba(0,0,0,0.28);cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,0.18);transition:transform .12s ease,box-shadow .12s ease,background .12s ease;color:#fff}
+.card:hover{transform:translateY(-4px);box-shadow:0 8px 18px rgba(0,0,0,0.24);background:var(--card-hover)}
+.card + .card{margin-top:0}
+.card h2{margin:0 0 6px 0}
+.results{padding:18px;margin:0 20px 20px 20px;background:var(--card);border-radius:8px;border:1px solid #e6e9ef}
+.results.hidden{display:none}
+
+.table{width:100%;border-collapse:collapse}
+.table th,.table td{padding:8px 10px;border-bottom:1px solid rgba(255,255,255,0.08);text-align:left;color:inherit}
+
+/* ============================================
+   RESPONSIVE STYLES
+   ============================================ */
+@media(max-width:600px){.search input{width:140px}}
+
+
+/*=============================================*/
+:root {
+  --maroon: #6a0f1a;
+  --maroon-dark: #4d0b13;
+  --white: #ffffff;
+  --gray: #e6e6e6;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--maroon);
+  color: var(--white);
+}
+
+/* HEADER */
+.topbar {
+  background: var(--maroon-dark);
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.logo {
+  width: 40px;
+}
+
+.controls input {
+  padding: 6px;
+  border-radius: 4px;
+  border: none;
+}
+
+.controls button {
+  padding: 6px 10px;
+  border: none;
+  background: var(--white);
+  color: var(--maroon);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* MAIN */
+main {
+  background: var(--maroon);
+  min-height: 80vh;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+/* TABLE */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+  color: #000;
+}
+
+.table th {
+  background: var(--maroon-dark);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.table th, .table td {
+  padding: 8px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+/* Sort indicators */
+.table th.sort-asc::after {
+  content: " ▲";
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.table th.sort-desc::after {
+  content: " ▼";
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.table th:hover {
+  background: var(--maroon);
+}
+
+.actions button {
+  margin-right: 5px;
+  padding: 4px 8px;
+  background: var(--maroon);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+}
+
+/* FORM */
+.form-box {
+  background: var(--maroon-dark);
+  padding: 15px;
+  margin: 20px;
+  border-radius: 6px;
+}
+
+.form-box label {
+  display: block;
+  margin-top: 10px;
+}
+
+.form-box input, 
+.form-box select, 
+.form-box textarea {
+  width: 100%;
+  padding: 6px;
+  margin-top: 4px;
+  border-radius: 4px;
+  border: none;
+}
+
+/* FOOTER */
+footer {
+  background: var(--maroon-dark);
+  padding: 10px;
+  text-align: center;
+  font-size: 13px;
+}
+
+/* Ensure footer sticks to the bottom: last declarations to override duplicates */
+html, body { height: 100%; }
+body { display: flex; flex-direction: column; min-height: 100vh; }
+main { flex: 1; }
+footer { margin-top: auto; }
+
+/* Collapsible form styles */
+.form-box { background: var(--maroon-dark); padding: 15px; margin: 20px; border-radius: 6px; }
+.form-box .form-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+.form-box .form-header button { background:transparent; border:1px solid rgba(255,255,255,0.12); color:var(--white); padding:6px 10px; border-radius:4px; cursor:pointer }
+.form-box.collapsed form { display: none; }
+.form-box.collapsed { padding-bottom:8px }
+
+/* highlight row when jumping from search */
+.table tr.highlight { background: #fff3b0 !important; transition: background 0.4s ease; }
+
+/* Improved form layout */
+.form-box form { display:block; gap:8px; }
+.form-box label{display:block;margin-top:8px;font-weight:600}
+.form-box input, .form-box select, .form-box textarea { width:100%; padding:8px; border-radius:6px; border:1px solid rgba(255,255,255,0.08); background:rgba(255,255,255,0.05); color:var(--white) }
+.form-box .form-header strong{font-size:16px}
+
+/* Button styles */
+button{cursor:pointer}
+button, .controls button, .actions button { background:var(--maroon); color:var(--white); border:1px solid rgba(0,0,0,0.08); padding:6px 10px; border-radius:6px }
+.actions button{background:transparent;border:1px solid rgba(0,0,0,0.06);color:inherit}
+
+/* Table improvements */
+.table thead th{background:var(--maroon-dark);color:var(--white);padding:10px}
+.table tbody td{padding:10px;background:var(--white);color:#000}
+.table tbody tr:nth-child(even) td{background:#f8f8f8}
+
+/* Departments / course blocks */
+.dept-block{border:1px solid rgba(255,255,255,0.06);padding:12px;margin-bottom:12px;background:rgba(255,255,255,0.02);border-radius:8px}
+.dept-block h3{display:flex;justify-content:space-between;align-items:center;margin:0 0 8px 0}
+.sec-block{margin:8px 0;padding:8px;border-radius:6px;background:rgba(255,255,255,0.01)}
+.results{max-width:1000px;margin:12px 20px;padding:12px;background:var(--card);border-radius:8px;color:#fff}
+
+/* main navigation in header */
+.main-nav{display:flex;gap:10px;align-items:center;margin-left:12px}
+.main-nav a{color:inherit;text-decoration:none;padding:6px 8px;border-radius:6px;transition:background .12s}
+.main-nav a:hover{background:rgba(255,255,255,0.06)}
+
+
+/* Settings panel */
+.settings-panel{background:rgba(255,255,255,0.02);padding:12px;border-radius:8px}
+.setting-row{padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.03)}
+.setting-row h3{margin:0 0 8px 0}
+.setting-row input{display:block;margin-top:6px}
+
+/* Light theme overrides */
+body[data-theme="light"]{ background:#f4f6f8; color:#111 }
+body[data-theme="light"] .topbar{ background:#ffffff; color:#111; border-bottom:1px solid rgba(0,0,0,0.06) }
+body[data-theme="light"] .brand h1{ color:#111 }
+body[data-theme="light"] .form-box{ background:#ffffff; color:#111 }
+body[data-theme="light"] .form-box input, body[data-theme="light"] .form-box select{ background:#fff; color:#111; border:1px solid #e2e6ea }
+body[data-theme="light"] .table thead th{ background:#f1f3f5; color:#111 }
+body[data-theme="light"] .table tbody td{ background:#fff; color:#111 }
+body[data-theme="light"] .results{ background:#ffffff; color:#111 }
+body[data-theme="light"] .dept-block{ background:#fff }
+
+/* Dark theme explicit (default) */
+body[data-theme="dark"]{ background:var(--maroon); color:var(--white) }
+
+

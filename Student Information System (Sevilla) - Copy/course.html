@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sections - CCS SIS</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer>
+    async function load(){
+      const el = document.getElementById('list')
+      const res = await fetch('/api/sections')
+      const data = await res.json()
+      if(!data || data.length===0){ el.innerHTML='<p>No sections</p>'; return }
+      el.innerHTML = '<ul>'+data.map(s=>`<li>${s.name} — ${s.department||''}</li>`).join('')+'</ul>'
+    }
+    window.addEventListener('DOMContentLoaded', load)
+  </script>
+</head>
+<body>
+      <header class="topbar">
+    <a class="brand" href="homepage.html">
+      <img src="assets/logo.png" alt="logo" class="logo" onerror="this.style.display='none'" />
+      <h1>CCS Student Information System</h1>
+    </a>
+    <nav class="main-nav">
+      <a href="students.html">Students</a>
+      <a href="departments.html">Departments</a>
+      <a href="course.html">Courses</a>
+      <a href="settings.html">Settings</a>
+    </nav>
+    <div class="controls">
+      <div class="search">
+        <input id="searchInput" placeholder="Search courses by ID or name..." />
+        <button id="searchBtn">Search</button>
+        <button id="clearSearchBtn">Clear</button>
+      </div>
+      <div class="settings">
+        <button id="settingsBtn">Settings ▾</button>
+          <div id="settingsMenu" class="menu hidden">
+            <a href="/logout">Logout</a>
+          </div>
+      </div>
+    </div>
+  </header>
+
+
+  <main>
+    <h2 style="padding:0 20px">Subjects</h2>
+    <div id="list" style="padding:12px 20px 20px 20px"></div>
+    <h2>Course Subjects</h2>
+
+<input id="cid" placeholder="Course ID">
+<input id="cname" placeholder="Course Name">
+<input id="cdesc" placeholder="Description">
+<input id="units" type="number" placeholder="Units">
+<button onclick="save()">Save</button>
+
+<table class="table">
+<thead>
+<tr><th>ID</th><th>Name</th><th>Description</th><th>Units</th><th>Actions</th></tr>
+</thead>
+<tbody id="ct"></tbody>
+</table>
+
+<script>
+let courses=JSON.parse(localStorage.getItem('courses')||'[]');
+
+function save(){
+  courses.push({id:cid.value,name:cname.value,desc:cdesc.value,units:units.value});
+  localStorage.setItem('courses',JSON.stringify(courses)); render();
+}
+
+function render(){
+  const q = (document.getElementById('searchInput')||{value:''}).value.toLowerCase();
+  ct.innerHTML='';
+
+  // Filter courses based on search query
+  const filteredCourses = courses.filter(c =>
+    (c.id || '').toLowerCase().includes(q) ||
+    (c.name || '').toLowerCase().includes(q)
+  );
+
+  if (filteredCourses.length === 0 && q.length > 0) {
+    ct.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 20px;">No courses found matching your search.</td></tr>';
+    return;
+  }
+
+  filteredCourses.forEach((c,i)=>{
+    // Find the original index in the courses array for deletion
+    const originalIndex = courses.indexOf(c);
+    ct.innerHTML+=`
+      <tr><td>${c.id}</td><td>${c.name}</td>
+      <td>${c.desc}</td><td>${c.units}</td>
+      <td><button onclick="del(${originalIndex})">Del</button></td></tr>`;
+  });
+}
+
+function del(i){
+  courses.splice(i,1);
+  localStorage.setItem('courses',JSON.stringify(courses));
+  render();
+}
+
+// Add search functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.getElementById('searchInput');
+  const searchBtn = document.getElementById('searchBtn');
+  const clearSearchBtn = document.getElementById('clearSearchBtn');
+
+  if (searchBtn) {
+    searchBtn.addEventListener('click', render);
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        render();
+      }
+    });
+    // Also trigger search on input change for real-time filtering
+    searchInput.addEventListener('input', render);
+  }
+
+  if (clearSearchBtn) {
+    clearSearchBtn.addEventListener('click', function() {
+      searchInput.value = '';
+      render();
+    });
+  }
+});
+
+render();
+</script>
+
+  </main>
+
+  <footer>
+    <small>© 2025 CCS Student Information System — Sevilla KLL Project</small>
+    <span>Made with Visual Code Studio. <a href="https://example.com" target="_blank" rel="noopener">About</a></span>
+  </footer>
+
+</body>
+</html>

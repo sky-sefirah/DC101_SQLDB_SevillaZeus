@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CCS Student Information System</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="homepage.html">
+            <img src="assets/logo.png" alt="logo" class="logo" onerror="this.style.display='none'" />
+            <h1>CCS Student Information System</h1>
+        </a>
+        <nav class="main-nav">
+            <a href="students.html">Students</a>
+            <a href="departments.html">Departments</a>
+            <a href="course.html">Courses</a>
+            <a href="settings.html">Settings</a>
+        </nav>
+        <div class="controls">
+            <div class="search">
+                <input id="searchInput" placeholder="Search students by name or ID..." />
+                <button id="searchBtn">Search</button>
+            </div>
+            <div class="settings">
+                <button id="settingsBtn">Settings ▾</button>
+                <div id="settingsMenu" class="menu hidden">
+                    <a href="/logout">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="grid">
+        <section class="card" onclick="goTo('students.html')">
+            <h2>Students</h2>
+            <p>View and search student records.</p>
+        </section>
+        <section class="card" onclick="goTo('departments.html')">
+            <h2>Departments</h2>
+            <p>Manage departments.</p>
+        </section>
+        <section class="card" onclick="goTo('sections.html')">
+            <h2>Sections</h2>
+            <p>View sections and assignments.</p>
+        </section>
+        <section class="card" onclick="goTo('subjects.html')">
+            <h2>Subjects</h2>
+            <p>View and assign subjects.</p>
+        </section>
+    </main>
+
+    <section id="searchResults" class="results hidden"></section>
+
+    <footer>
+        <small>© 2025 CCS Student Information System — Sevilla KLL Project</small>
+        <span>Made with Visual Code Studio. <a href="https://example.com" target="_blank" rel="noopener">About</a></span>
+    </footer>
+
+</body>
+</html>
