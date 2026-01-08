@@ -47,6 +47,8 @@ Features:
 •	Search students by name or student ID
 •	Sort student data in ascending or descending order
 •	Dropdown selections for Department (ACT / BSCS) and Year & Section
+![student_page-table](https://github.com/user-attachments/assets/43a31d11-6360-4b8b-bc36-d81696b93601)
+![student_page-form](https://github.com/user-attachments/assets/1445ad6a-1497-4208-a254-6451acf99eb6)
 
 2. Department Management Page
 Features:
@@ -55,6 +57,7 @@ Features:
 •	Manages Year & Section entries
 •	Add and delete sections dynamically
 •	Organized viewing of students per department
+![department_page](https://github.com/user-attachments/assets/da615cd1-abeb-48f8-8f64-5c240ff56b2a)
 
 3. Course Management Page
 Features:
@@ -62,17 +65,22 @@ Features:
 •	Add, edit, and delete course records
 •	Stores course ID, name, description, and credit units
 •	Provides a structured way to manage academic subjects
+![course_page](https://github.com/user-attachments/assets/0f5caf88-5559-4243-8666-47242cdd6efd)
 
 3. Setting Management Page
 Features:
 •	Controls Dark/Light Theme
 •	Manage Acounts and Password
 •	Logout and Clear LocalData
+![setting_page-top](https://github.com/user-attachments/assets/54dbb6e6-9118-4a36-bf4e-2aa8ef712ba6)
+![setting_page-bottom](https://github.com/user-attachments/assets/8b35bbf6-8ff7-4447-aac1-39d053f5660e)
 
 4. Login and Home Page
 Features:
 •	Displays Login ID and Password
 •	Displays Main Page for Student, Department, Course and Setting Redirectories
+![login_page](https://github.com/user-attachments/assets/d0a2cca7-5758-4206-b7ed-87ddedccad8e)
+![homepage](https://github.com/user-attachments/assets/2609409a-3599-46d2-8c75-c86ba72177e2)
 
 Challenges and Learning:
 
