@@ -22,3 +22,7 @@ or
    PS D:\Visual Code Studio\Student Information System (Sevilla) - Copy> cd "d:\Visual Code Studio\Student Information System (Sevilla) - Copy" ; node -c script.js
 5. Run the Live Server on click of an html file to access CCS Student Information System Webpages
 6. The default user id is: admin password: admin
+
+Entity Relationship Diagram
+<img width="1021" height="1337" alt="Entity-Relationship Diagram" src="https://github.com/user-attachments/assets/23745dc1-855e-46ac-a08d-87e317121f4d" />
+
