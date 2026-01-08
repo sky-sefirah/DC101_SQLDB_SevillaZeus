@@ -1,0 +1,316 @@
+<svg width="785pt" height="995pt" viewBox="0.00 0.00 785.00 995.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 990.61)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-990.61 781,-990.61 781,4 -4,4"/>
+<g id="clust1" class="cluster">
+<title>cluster_0</title>
+<polygon fill="lightgrey" stroke="lightgrey" points="629,-640.21 629,-942.61 769,-942.61 769,-640.21 629,-640.21"/>
+<text xml:space="preserve" text-anchor="middle" x="699" y="-926.01" font-family="Times,serif" font-size="14.00">course table</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_1</title>
+<polygon fill="none" stroke="blue" points="8,-64.21 8,-942.61 154,-942.61 154,-64.21 8,-64.21"/>
+<text xml:space="preserve" text-anchor="middle" x="81" y="-926.01" font-family="Times,serif" font-size="14.00">student table</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_2</title>
+<polygon fill="none" stroke="blue" points="181,-712.21 181,-865.81 357,-865.81 357,-712.21 181,-712.21"/>
+<text xml:space="preserve" text-anchor="middle" x="269" y="-849.21" font-family="Times,serif" font-size="14.00">department table</text>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_3</title>
+<polygon fill="none" stroke="blue" points="365,-712.21 365,-789.01 621,-789.01 621,-712.21 365,-712.21"/>
+<text xml:space="preserve" text-anchor="middle" x="493" y="-772.41" font-family="Times,serif" font-size="14.00">year_section table</text>
+</g>
+<!-- course_id -->
+<g id="node1" class="node">
+<title>course_id</title>
+<ellipse fill="white" stroke="white" cx="692" cy="-891.81" rx="48.58" ry="18"/>
+<text xml:space="preserve" text-anchor="middle" x="692" y="-887.61" font-family="Times,serif" font-size="14.00">course_id</text>
+</g>
+<!-- course_name -->
+<g id="node2" class="node">
+<title>course_name</title>
+<ellipse fill="white" stroke="white" cx="699" cy="-815.01" rx="61.98" ry="18"/>
+<text xml:space="preserve" text-anchor="middle" x="699" y="-810.81" font-family="Times,serif" font-size="14.00">course_name</text>
+</g>
+<!-- course_id&#45;&gt;course_name -->
+<g id="edge1" class="edge">
+<title>course_id-&gt;course_name</title>
+<path fill="none" stroke="black" d="M693.62,-873.47C694.43,-864.87 695.42,-854.28 696.33,-844.54"/>
+<polygon fill="black" stroke="black" points="699.8,-845.06 697.24,-834.78 692.83,-844.41 699.8,-845.06"/>
+</g>
+<!-- description -->
+<g id="node3" class="node">
+<title>description</title>
+<ellipse fill="white" stroke="white" cx="695" cy="-738.21" rx="53.95" ry="18"/>
+<text xml:space="preserve" text-anchor="middle" x="695" y="-734.01" font-family="Times,serif" font-size="14.00">description</text>
+</g>
+<!-- course_name&#45;&gt;description -->
+<g id="edge2" class="edge">
+<title>course_name-&gt;description</title>
+<path fill="none" stroke="black" d="M698.07,-796.67C697.61,-788.07 697.05,-777.48 696.53,-767.74"/>
+<polygon fill="black" stroke="black" points="700.03,-767.78 696,-757.98 693.04,-768.15 700.03,-767.78"/>
+</g>
+<!-- data_unit -->
+<g id="node4" class="node">
+<title>data_unit</title>
+<ellipse fill="white" stroke="white" cx="689" cy="-666.21" rx="46.97" ry="18"/>
+<text xml:space="preserve" text-anchor="middle" x="689" y="-662.01" font-family="Times,serif" font-size="14.00">data_unit</text>
+</g>
+<!-- description&#45;&gt;data_unit -->
+<g id="edge3" class="edge">
+<title>description-&gt;data_unit</title>
+<path fill="none" stroke="black" d="M693.52,-719.91C692.89,-712.62 692.15,-703.94 691.45,-695.75"/>
+<polygon fill="black" stroke="black" points="694.94,-695.49 690.6,-685.83 687.96,-696.09 694.94,-695.49"/>
+</g>
+<!-- end -->
+<g id="node22" class="node">
+<title>end</title>
+<polygon fill="none" stroke="black" points="347.11,-36.21 310.89,-36.21 310.89,0 347.11,0 347.11,-36.21"/>
+<polyline fill="none" stroke="black" points="322.89,-36.21 310.89,-24.21"/>
+<polyline fill="none" stroke="black" points="310.89,-12 322.89,0"/>
+<polyline fill="none" stroke="black" points="335.11,0 347.11,-12"/>
+<polyline fill="none" stroke="black" points="347.11,-24.21 335.11,-36.21"/>
+<text xml:space="preserve" text-anchor="middle" x="329" y="-13.91" font-family="Times,serif" font-size="14.00">end</text>
+</g>
+<!-- data_unit&#45;&gt;end -->
+<g id="edge25" class="edge">
+<title>data_unit-&gt;end</title>
+<path fill="none" stroke="black" d="M660.28,-651.58C620.11,-630.28 552,-585.05 552,-523.21 552,-523.21 552,-523.21 552,-161.21 552,-70.4 418.85,-35.08 358.33,-23.72"/>
+<polygon fill="black" stroke="black" points="359.2,-20.32 348.74,-22.02 357.98,-27.21 359.2,-20.32"/>
+</g>
+<!-- student_id -->
+<g id="node5" class="node">
+<title>student_id</title>
+<ellipse fill="lightgrey" stroke="black" cx="95" cy="-891.81" rx="51.27" ry="18"/>
+<text xml:space="preserve" text-anchor="middle" x="95" y="-887.61" font-family="Times,serif" font-size="14.00">student_id</text>
+</g>
+<!-- last_name -->
+<g id="node6" class="node">
+<title>last_name</title>
+<ellipse fill="lightgrey" stroke="black" cx="88" cy="-815.01" rx="50.19" ry="18"/>
+<text xml:space="preserve" text-anchor="middle" x="88" y="-810.81" font-family="Times,serif" font-size="14.00">last_name</text>
+</g>
+<!-- student_id&#45;&gt;last_name -->
+<g id="edge4" class="edge">
+<title>student_id-&gt;last_name</title>
+<path fill="none" stroke="black" d="M93.38,-873.47C92.57,-864.87 91.58,-854.28 90.67,-844.54"/>
+<polygon fill="black" stroke="black" points="94.17,-844.41 89.76,-834.78 87.2,-845.06 94.17,-844.41"/>
+</g>
+<!-- department_id -->
+<g id="node17" class="node">
+<title>department_id</title>
+<ellipse fill="lightgrey" stroke="black" cx="269" cy="-815.01" rx="66.81" ry="18"/>
+<text xml:space="preserve" text-anchor="middle" x="269" y="-810.81" font-family="Times,serif" font-size="14.00">department_id</text>
+</g>
+<!-- student_id&#45;&gt;department_id -->
+<g id="edge22" class="edge">
+<title>student_id-&gt;department_id</title>
+<path fill="none" stroke="black" d="M128.46,-877.85C138.04,-874.06 148.46,-869.84 158,-865.81 180.7,-856.22 205.76,-845.03 226.32,-835.69"/>
+<polygon fill="black" stroke="black" points="227.6,-838.95 235.25,-831.62 224.69,-832.58 227.6,-838.95"/>
+</g>
+<!-- year_section -->
+<g id="node20" class="node">
+<title>year_section</title>
+<ellipse fill="lightgrey" stroke="black" cx="553" cy="-738.21" rx="59.84" ry="18"/>
+<text xml:space="preserve" text-anchor="middle" x="553" y="-734.01" font-family="Times,serif" font-size="14.00">year_section</text>
+</g>
+<!-- student_id&#45;&gt;year_section -->
+<g id="edge23" class="edge">
+<title>student_id-&gt;year_section</title>
+<path fill="none" stroke="black" d="M145.93,-888.82C211.74,-885.76 322.44,-878.85 361,-865.81 426.63,-843.63 491.49,-793.37 526.48,-763.27"/>
+<polygon fill="black" stroke="black" points="528.75,-765.93 533.98,-756.72 524.15,-760.66 528.75,-765.93"/>
+</g>
+<!-- first_name -->
+<g id="node7" class="node">
+<title>first_name</title>
+<ellipse fill="lightgrey" stroke="black" cx="81" cy="-738.21" rx="52.33" ry="18"/>
+<text xml:space="preserve" text-anchor="middle" x="81" y="-734.01" font-family="Times,serif" font-size="14.00">first_name</text>
+</g>
+<!-- last_name&#45;&gt;first_name -->
+<g id="edge5" class="edge">
+<title>last_name-&gt;first_name</title>
+<path fill="none" stroke="black" d="M86.38,-796.67C85.57,-788.07 84.58,-777.48 83.67,-767.74"/>
+<polygon fill="black" stroke="black" points="87.17,-767.61 82.76,-757.98 80.2,-768.26 87.17,-767.61"/>
+</g>
+<!-- middle_initial -->
+<g id="node8" class="node">
+<title>middle_initial</title>
+<ellipse fill="lightgrey" stroke="black" cx="81" cy="-666.21" rx="65.22" ry="18"/>
+<text xml:space="preserve" text-anchor="middle" x="81" y="-662.01" font-family="Times,serif" font-size="14.00">middle_initial</text>
+</g>
+<!-- first_name&#45;&gt;middle_initial -->
+<g id="edge6" class="edge">
+<title>first_name-&gt;middle_initial</title>
+<path fill="none" stroke="black" d="M81,-719.91C81,-712.62 81,-703.94 81,-695.75"/>
+<polygon fill="black" stroke="black" points="84.5,-695.83 81,-685.83 77.5,-695.83 84.5,-695.83"/>
+</g>
+<!-- department -->
+<g id="node9" class="node">
+<title>department</title>
+<ellipse fill="lightgrey" stroke="black" cx="82" cy="-594.21" rx="54.47" ry="18"/>
+<text xml:space="preserve" text-anchor="middle" x="82" y="-590.01" font-family="Times,serif" font-size="14.00">department</text>
+</g>
+<!-- middle_initial&#45;&gt;department -->
+<g id="edge7" class="edge">
+<title>middle_initial-&gt;department</title>
+<path fill="none" stroke="black" d="M81.25,-647.91C81.35,-640.62 81.48,-631.94 81.59,-623.75"/>
+<polygon fill="black" stroke="black" points="85.09,-623.88 81.73,-613.83 78.09,-623.78 85.09,-623.88"/>
+</g>
+<!-- year_sections -->
+<g id="node10" class="node">
+<title>year_sections</title>
+<ellipse fill="lightgrey" stroke="black" cx="82" cy="-522.21" rx="63.59" ry="18"/>
+<text xml:space="preserve" text-anchor="middle" x="82" y="-518.01" font-family="Times,serif" font-size="14.00">year_sections</text>
+</g>
+<!-- department&#45;&gt;year_sections -->
+<g id="edge8" class="edge">
+<title>department-&gt;year_sections</title>
+<path fill="none" stroke="black" d="M82,-575.91C82,-568.62 82,-559.94 82,-551.75"/>
+<polygon fill="black" stroke="black" points="85.5,-551.83 82,-541.83 78.5,-551.83 85.5,-551.83"/>
+</g>
+<!-- gender -->
+<g id="node11" class="node">
+<title>gender</title>
+<ellipse fill="lightgrey" stroke="black" cx="83" cy="-450.21" rx="37.31" ry="18"/>
+<text xml:space="preserve" text-anchor="middle" x="83" y="-446.01" font-family="Times,serif" font-size="14.00">gender</text>
+</g>
+<!-- year_sections&#45;&gt;gender -->
+<g id="edge9" class="edge">
+<title>year_sections-&gt;gender</title>
+<path fill="none" stroke="black" d="M82.25,-503.91C82.35,-496.62 82.48,-487.94 82.59,-479.75"/>
+<polygon fill="black" stroke="black" points="86.09,-479.88 82.73,-469.83 79.09,-479.78 86.09,-479.88"/>
+</g>
+<!-- birth_date -->
+<g id="node12" class="node">
+<title>birth_date</title>
+<ellipse fill="lightgrey" stroke="black" cx="90" cy="-378.21" rx="50.19" ry="18"/>
+<text xml:space="preserve" text-anchor="middle" x="90" y="-374.01" font-family="Times,serif" font-size="14.00">birth_date</text>
+</g>
+<!-- gender&#45;&gt;birth_date -->
+<g id="edge10" class="edge">
+<title>gender-&gt;birth_date</title>
+<path fill="none" stroke="black" d="M84.73,-431.91C85.46,-424.62 86.33,-415.94 87.15,-407.75"/>
+<polygon fill="black" stroke="black" points="90.63,-408.12 88.14,-397.82 83.66,-407.43 90.63,-408.12"/>
+</g>
+<!-- age -->
+<g id="node13" class="node">
+<title>age</title>
+<ellipse fill="lightgrey" stroke="black" cx="91" cy="-306.21" rx="27" ry="18"/>
+<text xml:space="preserve" text-anchor="middle" x="91" y="-302.01" font-family="Times,serif" font-size="14.00">age</text>
+</g>
+<!-- birth_date&#45;&gt;age -->
+<g id="edge11" class="edge">
+<title>birth_date-&gt;age</title>
+<path fill="none" stroke="black" d="M90.25,-359.91C90.35,-352.62 90.48,-343.94 90.59,-335.75"/>
+<polygon fill="black" stroke="black" points="94.09,-335.88 90.73,-325.83 87.09,-335.78 94.09,-335.88"/>
+</g>
+<!-- email -->
+<g id="node14" class="node">
+<title>email</title>
+<ellipse fill="lightgrey" stroke="black" cx="99" cy="-234.21" rx="32.49" ry="18"/>
+<text xml:space="preserve" text-anchor="middle" x="99" y="-230.01" font-family="Times,serif" font-size="14.00">email</text>
+</g>
+<!-- age&#45;&gt;email -->
+<g id="edge12" class="edge">
+<title>age-&gt;email</title>
+<path fill="none" stroke="black" d="M92.98,-287.91C93.81,-280.62 94.8,-271.94 95.74,-263.75"/>
+<polygon fill="black" stroke="black" points="99.22,-264.15 96.87,-253.82 92.26,-263.36 99.22,-264.15"/>
+</g>
+<!-- contact -->
+<g id="node15" class="node">
+<title>contact</title>
+<ellipse fill="lightgrey" stroke="black" cx="103" cy="-162.21" rx="38.92" ry="18"/>
+<text xml:space="preserve" text-anchor="middle" x="103" y="-158.01" font-family="Times,serif" font-size="14.00">contact</text>
+</g>
+<!-- email&#45;&gt;contact -->
+<g id="edge13" class="edge">
+<title>email-&gt;contact</title>
+<path fill="none" stroke="black" d="M99.99,-215.91C100.41,-208.62 100.9,-199.94 101.37,-191.75"/>
+<polygon fill="black" stroke="black" points="104.86,-192.01 101.94,-181.83 97.87,-191.61 104.86,-192.01"/>
+</g>
+<!-- address -->
+<g id="node16" class="node">
+<title>address</title>
+<ellipse fill="lightgrey" stroke="black" cx="105" cy="-90.21" rx="40" ry="18"/>
+<text xml:space="preserve" text-anchor="middle" x="105" y="-86.01" font-family="Times,serif" font-size="14.00">address</text>
+</g>
+<!-- contact&#45;&gt;address -->
+<g id="edge14" class="edge">
+<title>contact-&gt;address</title>
+<path fill="none" stroke="black" d="M103.49,-143.91C103.7,-136.62 103.95,-127.94 104.18,-119.75"/>
+<polygon fill="black" stroke="black" points="107.68,-119.93 104.47,-109.83 100.68,-119.73 107.68,-119.93"/>
+</g>
+<!-- address&#45;&gt;end -->
+<g id="edge24" class="edge">
+<title>address-&gt;end</title>
+<path fill="none" stroke="black" d="M137.09,-79.17C180.55,-65.57 257.5,-41.49 299.55,-28.33"/>
+<polygon fill="black" stroke="black" points="300.48,-31.7 308.98,-25.37 298.39,-25.02 300.48,-31.7"/>
+</g>
+<!-- department_id&#45;&gt;department -->
+<g id="edge20" class="edge">
+<title>department_id-&gt;department</title>
+<path fill="none" stroke="black" d="M208.67,-807C197.85,-803.19 187.61,-797.49 180,-789.01 135.19,-739.12 192.44,-695.85 155,-640.21 147.73,-629.42 136.92,-620.75 125.83,-614.01"/>
+<polygon fill="black" stroke="black" points="127.85,-611.13 117.42,-609.32 124.45,-617.25 127.85,-611.13"/>
+</g>
+<!-- department_name -->
+<g id="node18" class="node">
+<title>department_name</title>
+<ellipse fill="lightgrey" stroke="black" cx="269" cy="-738.21" rx="80.21" ry="18"/>
+<text xml:space="preserve" text-anchor="middle" x="269" y="-734.01" font-family="Times,serif" font-size="14.00">department_name</text>
+</g>
+<!-- department_id&#45;&gt;department_name -->
+<g id="edge15" class="edge">
+<title>department_id-&gt;department_name</title>
+<path fill="none" stroke="black" d="M269,-796.67C269,-788.07 269,-777.48 269,-767.74"/>
+<polygon fill="black" stroke="black" points="272.5,-767.98 269,-757.98 265.5,-767.98 272.5,-767.98"/>
+</g>
+<!-- department_id&#45;&gt;year_section -->
+<g id="edge17" class="edge">
+<title>department_id-&gt;year_section</title>
+<path fill="none" stroke="black" d="M331.66,-808.35C390.01,-802.81 470.03,-794.44 484,-789.01 499.47,-783 514.66,-772.68 526.82,-762.98"/>
+<polygon fill="black" stroke="black" points="528.88,-765.82 534.33,-756.74 524.4,-760.44 528.88,-765.82"/>
+</g>
+<!-- section_id -->
+<g id="node19" class="node">
+<title>section_id</title>
+<ellipse fill="lightgrey" stroke="black" cx="424" cy="-738.21" rx="50.73" ry="18"/>
+<text xml:space="preserve" text-anchor="middle" x="424" y="-734.01" font-family="Times,serif" font-size="14.00">section_id</text>
+</g>
+<!-- section_id&#45;&gt;department_id -->
+<g id="edge16" class="edge">
+<title>section_id-&gt;department_id</title>
+<path fill="none" stroke="black" d="M407.13,-755.68C395.14,-766.56 378.18,-780.35 361,-789.01 352.09,-793.51 342.27,-797.27 332.47,-800.4"/>
+<polygon fill="black" stroke="black" points="331.5,-797.04 322.9,-803.24 333.49,-803.75 331.5,-797.04"/>
+</g>
+<!-- year_section&#45;&gt;year_sections -->
+<g id="edge21" class="edge">
+<title>year_section-&gt;year_sections</title>
+<path fill="none" stroke="black" d="M521,-722.67C438.46,-685.17 218.33,-585.15 124.89,-542.7"/>
+<polygon fill="black" stroke="black" points="126.6,-539.63 116.05,-538.68 123.71,-546.01 126.6,-539.63"/>
+</g>
+<!-- start -->
+<g id="node21" class="node">
+<title>start</title>
+<polygon fill="none" stroke="black" points="393,-986.61 353.88,-968.61 393,-950.61 432.12,-968.61 393,-986.61"/>
+<polyline fill="none" stroke="black" points="364.78,-973.63 364.78,-963.6"/>
+<polyline fill="none" stroke="black" points="382.1,-955.63 403.9,-955.63"/>
+<polyline fill="none" stroke="black" points="421.22,-963.6 421.22,-973.63"/>
+<polyline fill="none" stroke="black" points="403.9,-981.6 382.1,-981.6"/>
+<text xml:space="preserve" text-anchor="middle" x="393" y="-964.41" font-family="Times,serif" font-size="14.00">start</text>
+</g>
+<!-- start&#45;&gt;course_id -->
+<g id="edge18" class="edge">
+<title>start-&gt;course_id</title>
+<path fill="none" stroke="black" d="M417.47,-961.49C466.32,-949.27 576.8,-921.63 641.73,-905.39"/>
+<polygon fill="black" stroke="black" points="642.21,-908.88 651.06,-903.06 640.51,-902.09 642.21,-908.88"/>
+</g>
+<!-- start&#45;&gt;student_id -->
+<g id="edge19" class="edge">
+<title>start-&gt;student_id</title>
+<path fill="none" stroke="black" d="M368.36,-961.43C319.92,-949.27 211.36,-922.02 146.57,-905.76"/>
+<polygon fill="black" stroke="black" points="147.8,-902.46 137.25,-903.42 146.1,-909.25 147.8,-902.46"/>
+</g>
+</g>
+</svg>
